@@ -1,9 +1,24 @@
 object Parking {
     private val parkingPlace = mutableMapOf<String, Car?>()
+    private var numberOfParkedCars = 0
 
     init {
         for(i in 1..20) {
             parkingPlace["p$i"] = null
+        }
+    }
+
+    fun getNumberOfParkedCars() {
+        println("Количество припаркованных машин за время работы: $numberOfParkedCars ")
+    }
+
+    fun showPark() {
+        for (place in parkingPlace) {
+            if (place.value == null) {
+                println("${place.key} = свободно")
+            } else {
+                println(place)
+            }
         }
     }
 
@@ -12,6 +27,7 @@ object Parking {
             if (place.value == null) {
                 parkingPlace[place.key] = car
                 println("Машина припаркована. Место ${place.key}")
+                numberOfParkedCars++
                 break
             }
         }
