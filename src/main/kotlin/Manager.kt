@@ -13,10 +13,16 @@ class Manager {
                 Commands.RETURN -> returnCar()
                 Commands.PARK_INFO_BY_PLACE -> parkInfoByPlace()
                 Commands.PARK_INFO_BY_CAR -> parkInfoByCar()
+                Commands.PARK_STATS -> parkStats()
+                Commands.PARK_ALL_STATS -> Parking.getNumberOfParkedCars()
                 Commands.HELP -> help()
                 else -> printErrorMessage()
             }
         }
+    }
+
+    private fun parkStats() {
+        Parking.showPark()
     }
 
     private fun parkInfoByPlace() {
@@ -54,6 +60,8 @@ class Manager {
         /park_info_by_car - возвращает место, где припаркована машина, по ее номеру
         /park - паркует автомобиль на любое свободное место
         /park_info_by_place - возвращает информацию о машине по месту на парковке
+        /park_stats -- возвращает текущую загрузку парковки
+        /park_all_stats - возвращает количество припаркованных машин за время работы
     """.trimIndent()
         )
     }
