@@ -34,26 +34,24 @@ object Parking {
     }
 
     fun returnCar(owner: Owner) {
-        var flag = false
         for (place in parkingPlace) {
             if(owner == place.value?.owner) {
                 println("Ваша машина на месте ${place.key}. Можете забрать её")
                 parkingPlace[place.key] = null
-                flag = true
+                return
             }
         }
-        if(!flag) println("Некорректный ввод")
+        println("Некорректный ввод")
     }
 
     fun showInfoByCar(carNumber: String) {
-        var flag = false
         for (place in parkingPlace) {
             if(carNumber == place.value?.number) {
                 println("Ваша машина на месте ${place.key}.")
-                flag = true
+                return
             }
         }
-        if(!flag) println("Некорректный ввод")
+        println("Некорректный ввод")
     }
 
     fun showInfoByPlace(place: String) {
